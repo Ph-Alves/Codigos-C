@@ -88,6 +88,10 @@ int main(void) {
 					}
 					printf("Escolha Pet que receberá o banho: ");
 					scanf("%i", &escolhaPetBanho[i]);
+					switch (escolhaPetBanho[i]){
+						case 1:
+							strcpy()
+					}
 					printf("1- Banho\n");
 					printf("2- Tosa\n");
 					printf("3- Banho e Tosa\n");
@@ -168,6 +172,18 @@ int main(void) {
 							strcpy(usuarioConsulta[i], nomeCliente[i]);
 							break;
 						case 7:
+							i = escolhaUsuarioConsulta[i];
+							strcpy(usuarioConsulta[i], nomeCliente[i]);
+							break;
+						case 8:
+							i = escolhaUsuarioConsulta[i];
+							strcpy(usuarioConsulta[i], nomeCliente[i]);
+							break;
+						case 9:
+							i = escolhaUsuarioConsulta[i];
+							strcpy(usuarioConsulta[i], nomeCliente[i]);
+							break;
+						case 10:
 							i = escolhaUsuarioConsulta[i];
 							strcpy(usuarioConsulta[i], nomeCliente[i]);
 							break;
