@@ -6,7 +6,7 @@
 // variáveis
 char senha[20], nomeCliente[10][50], nomePet[10][50], telefone[10][30], banhoSelecionado[10][50], diaConsulta[10][50], usuarioConsulta[10][50], medicoConsulta[10][50], petBanho[10][50];
 
-int i, escolha, qntdUsuarios, escolhaBanho, escolhaDiaConsulta, escolhaUsuarioConsulta, escolhaMedico, escolhaPetBanho;
+int i, escolha, qntdUsuarios, escolhaBanho, escolhaDiaConsulta, escolhaUsuarioConsulta, escolhaMedico, escolhaPetBanho, verifdeCadastroBanho;
 
 //função LimpaTela
 void LimparTela() {
@@ -20,6 +20,7 @@ void LimparTela() {
 // Função cadastro
 void paulo() {
 	LimparTela();
+	printf("\nSuper_Petshop_Paulo_ES\n\n");
 	printf("====== CADASTRO ======\n\n");
 	printf("Digite o nome do cliente: ");
 	fflush(stdin);
@@ -38,6 +39,7 @@ int main(void) {
 	
 	int *pQntdUsuarios;
 	pQntdUsuarios = &qntdUsuarios;
+	pQntdUsuarios = 0;
 	
 
 	// login de senha
@@ -86,7 +88,15 @@ int main(void) {
 			// Agendamento
 			case 2:
 				while (escolha == 2) {
+					if (*pQntdUsuarios == 0){
+						printf("\nSuper_Petshop_Paulo_ES\n\n");
+						printf("Nenhum usuário foi cadastrado!!");
+						getchar();
+						escolha = 0;
+						break;
+					}
 					LimparTela();
+					printf("\nSuper_Petshop_Paulo_ES\n\n");
 					printf("====== AGENDAMENTO ======\n\n");
 					for(i=1; i<=*pQntdUsuarios; i++){
 					printf("%i - %s\n", i, nomePet[i]);
@@ -135,9 +145,11 @@ int main(void) {
 							strcpy(petBanho[i], nomePet[i]);
 							break;
 						default:
-							printf("Escolha Inválida!");
-							getchar();
-							escolhaPetBanho = 0;
+							printf("Escolha Inválida!\n");
+							printf("Você será redirecionado para o menu em 5 segundos...\n");
+							sleep(5);
+							escolha = 0;
+							break;
 					}
 					printf("\n=== BANHOS ===\n\n");
 					printf("1- Banho\n");
@@ -157,8 +169,10 @@ int main(void) {
 							break;
 						default:
 							printf("Escolha inválida!");
-							getchar();
-							escolhaBanho = 0;
+							printf("Você será redirecionado para o menu em 5 segundos...\n");
+							sleep(5);
+							escolha = 0;
+							break;
 					}
 					escolha = 0;
 					i++;
@@ -168,7 +182,15 @@ int main(void) {
 			// Consulta
 			case 3:
 				while (escolha == 3) {
+					if (*pQntdUsuarios == 0){
+						printf("\nSuper_Petshop_Paulo_ES\n\n");
+						printf("Nenhum usuário foi cadastrado!!");
+						getchar();
+						escolha = 0;
+						break;
+					}
 					LimparTela();
+					printf("\nSuper_Petshop_Paulo_ES\n\n");
 					printf("====== CONSULTA ======\n\n");
 					printf("=== CLIENTES ===\n\n");
 					for(i=1; i<=*pQntdUsuarios; i++) {
@@ -218,13 +240,14 @@ int main(void) {
 							strcpy(usuarioConsulta[i], nomeCliente[i]);
 							break;
 						default:
-							printf("Escolha inválida!");
-							getchar();
-							escolhaUsuarioConsulta = 0;
+							printf("Escolha inválida!\n");
+							printf("Você será redirecionado para o menu em 5 segundos...\n");
+							sleep(5);
+							escolha = 0;
+							break;
 					}
 					
-					LimparTela();
-					printf("=== DIAS DA CONSULTA ===\n\n");
+					printf("\n=== DIAS DA CONSULTA ===\n\n");
 					printf("1- Segunda-Feira\n");
 					printf("2- Quinta-Feira\n");
 					printf("\nEscolha um dia para a consulta: ");
@@ -238,12 +261,13 @@ int main(void) {
 							break;
 						default:
 							printf("Escolha inválida!");
-							getchar();
-							escolhaDiaConsulta = 0;
+							printf("Você será redirecionado para o menu em 5 segundos...\n");
+							sleep(5);
+							escolha = 0;
+							break;
 					}
-
-					LimparTela();
-					printf("=== MÉDICOS ===\n\n");
+					
+					printf("\n=== MÉDICOS ===\n\n");
 					printf("1- Dr.Fabiano\n");
 					printf("2- Dr.Paulo\n");
 					printf("Escolha um médico para o atendimento: ");
@@ -257,8 +281,10 @@ int main(void) {
 							break;
 						default:
 							printf("Escolha Inválida!!");
-							getchar();
-							escolhaMedico = 0;
+							printf("Você será redirecionado para o menu em 5 segundos...\n");
+							sleep(5);
+							escolha = 0;
+							break;
 					}
 					escolha = 0;
 					i++;
@@ -268,7 +294,8 @@ int main(void) {
 			// Imprimir relatório geral
 			case 4:
 				while (escolha == 4) {
-					if (qntdUsuarios == 0){
+					if (*pQntdUsuarios == 0){
+						printf("\nSuper_Petshop_Paulo_ES\n\n");
 						printf("Nenhum usuário foi cadastrado!!");
 						getchar();
 						escolha = 0;
@@ -276,6 +303,7 @@ int main(void) {
 					}
 					for(i=1; i<=qntdUsuarios; i++) {
 						LimparTela();
+						printf("\nSuper_Petshop_Paulo_ES\n\n");
 						printf("====== RELATÓRIO GERAL ======\n\n");
 						printf("Nome do cliente: %s\n", nomeCliente[i]);
 						printf("Nome do Pet: %s\n", nomePet[i]);
